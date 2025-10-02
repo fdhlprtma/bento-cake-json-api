@@ -42,27 +42,36 @@ Aplikasi ini dibuat berdasarkan instruksi kerja pada soal ujian "Bento Cake".
    - Total = Tagihan Awal + Ongkos Kirim.
 
 9. **Struktur Folder**  
+   ```yaml 
     Bento-Cake/
-      index.html
-      readme.md
-      css/
-        style.css
-      assets/
-        images/
-            logo.png
-      api-bento/
-        config/
-            cors.php
-        controllers/
-            OrderController.php
-        models/
-            OrderModel.php
-        routes/
-            order.php
-        utils/
-            Response.php
-        .htaccess
-        index.php
+      │── index.html # Frontend utama (form pemesanan)
+      │── README.md # Dokumentasi project
+      │
+      ├── css/ # Folder untuk file CSS
+      │ └── style.css
+      │
+      ├── assets/ # Folder aset statis (gambar, ikon, dll)
+      │ └── images/
+      │ └── logo.png
+      │
+      └── api-bento/ # Folder API (backend)
+      │── .htaccess # Routing agar URL rapi
+      │── index.php # Router utama API
+      │
+      ├── config/ # Konfigurasi (misalnya CORS)
+      │ └── cors.php
+      │
+      ├── controllers/ # Logic utama API
+      │ └── OrderController.php
+      │
+      ├── models/ # Model data (akses JSON / DB)
+      │ └── OrderModel.php
+      │
+      ├── routes/ # Routing endpoint
+      │ └── order.php
+      │
+      └── utils/ # Helper / response standar
+      └── Response.php
 
 ## 📌 Cara Menjalankan
 
@@ -97,3 +106,4 @@ Aplikasi ini dibuat berdasarkan instruksi kerja pada soal ujian "Bento Cake".
 - Tagihan Awal: Rp 360.000  
 - Ongkos Kirim: Rp 5.000  
 - **Total Tagihan: Rp 365.000**
+
