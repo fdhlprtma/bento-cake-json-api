@@ -1,0 +1,57 @@
+[
+    {
+        "nama": "Fadhil",
+        "noHP": "08123456789",
+        "jumlahPesanan": 2,
+        "lokasi": "Makassar",
+        "tagihanAwal": 100000,
+        "ongkir": 10000,
+        "totalTagihan": 110000,
+        "createdAt": "2025-10-01 12:45:20",
+        "id": "order_68dd226030013"
+    },
+    {
+        "nama": "Budi",
+        "noHP": "0812345678",
+        "jumlahPesanan": 2,
+        "lokasi": "Bogor",
+        "tagihanAwal": 180000,
+        "ongkir": 10000,
+        "totalTagihan": 190000,
+        "createdAt": "2025-10-01 12:56:00",
+        "id": "order_68dd24e04d0c5"
+    },
+    {
+        "nama": "Budi",
+        "noHP": "0812345678",
+        "jumlahPesanan": 2,
+        "lokasi": "Bogor",
+        "tagihanAwal": 180000,
+        "ongkir": 10000,
+        "totalTagihan": 190000,
+        "createdAt": "2025-10-01 13:04:09",
+        "id": "order_68dd26c9e060d"
+    },
+    {
+        "nama": "Fatur",
+        "noHP": "0812345678",
+        "jumlahPesanan": 3,
+        "lokasi": "Bogor",
+        "tagihanAwal": 270000,
+        "ongkir": 10000,
+        "totalTagihan": 280000,
+        "createdAt": "2025-10-01 13:18:43",
+        "id": "order_68dd2a3362e0c"
+    },
+    {
+        "nama": "khaeral",
+        "noHP": "0812345678",
+        "jumlahPesanan": 4,
+        "lokasi": "Bogor",
+        "tagihanAwal": 360000,
+        "ongkir": 10000,
+        "totalTagihan": 370000,
+        "createdAt": "2025-10-01 14:42:59",
+        "id": "order_68dd3df3ef826"
+    }
+]
