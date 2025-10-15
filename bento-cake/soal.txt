@@ -1,0 +1,24 @@
+//	Instruksi Kerja Nomor 1.
+// Fungsi untuk menghitung tagihan awal
+//	Instruksi Kerja Nomor 2.
+//	Variabel lokasi berisi data kota lokasi restoran dalam bentuk array.
+//	Instruksi Kerja Nomor 3.
+//	Mengurutkan array lokasi sesuai abjad A-Z.
+//	Instruksi Kerja Nomor 4.
+//	Variabel untuk menyimpan harga satuan bento cake.
+<!-- Instruksi Kerja Nomor 5. -->
+<!-- Menampilkan judul halaman -->
+<!-- Instruksi Kerja Nomor 6. -->
+<!-- Menampilkan logo restoran -->
+<!-- Form untuk memasukkan data pemesanan. -->
+//	Instruksi Kerja Nomor 7.
+//	Kode berikut dieksekusi setelah tombol Pesan ditekan.
+//	Variabel $dataPesanan berisi data-data pemesanan dari form dalam bentuk array.
+//	Variabel berisi path file data.json yang digunakan untuk menyimpan data pemesanan.
+//	Mengubah data pemesanan yang berbentuk array PHP menjadi bentuk JSON.
+//	Instruksi Kerja Nomor 8.
+//	Mengubah data JSON ke array PHP.
+//	Tagihan awal (jumlah pesanan × harga satuan)
+//	Instruksi Kerja Nomor 9: Hitung ongkos kirim
+//	Instruksi Kerja Nomor 10: Total Tagihan
+//	Menampilkan hasil

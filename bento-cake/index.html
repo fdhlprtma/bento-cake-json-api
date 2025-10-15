@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bento Cake Order Form</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div class="container">
+		<h3>Pemesanan Bento Cake</h3>
+		<img src="assets/pictures/logo.jpg" alt="Logo Restoran" width="100">
+
+		<form id="formPemesanan">
+			<div class="form-group">
+				<label>Nama Pelanggan:</label>
+				<input type="text" id="nama" required>
+			</div>
+
+			<div class="form-group">
+				<label>Nomor HP:</label>
+				<input type="number" id="noHP" required>
+			</div>
+
+			<div class="form-group">
+				<label>Jumlah Pesanan:</label>
+				<input type="number" id="jumlahPesanan" min="1" required>
+			</div>
+
+			<div class="form-group">
+				<label>Lokasi Pengiriman:</label>
+				<select id="lokasi" required>
+					<option value="">- Pilih lokasi -</option>
+				</select>
+			</div>
+
+			<button type="submit">Pesan Sekarang</button>
+		</form>
+
+		<div id="errorMsg" class="error"></div>
+		<div id="hasil"></div>
+	</div>
+
+	<script>
+		const lokasiSelect = document.getElementById("lokasi");
+		const errorMsg = document.getElementById("errorMsg");
+
+		// ====== 1. Ambil data lokasi dari API ======
+		fetch("http://localhost/bento-cake/api-bento/lokasi")
+			.then((res) => res.json())
+			.then((response) => {
+				if (response.status === "success") {
+					response.data.forEach((lok) => {
+						const opt = document.createElement("option");
+						opt.value = lok;
+						opt.textContent = lok;
+						lokasiSelect.appendChild(opt);
+					});
+				} else {
+					errorMsg.textContent = "Gagal memuat daftar lokasi.";
+				}
+			})
+			.catch(() => {
+				errorMsg.textContent = "Tidak dapat terhubung ke server API.";
+			});
+
+		// ====== 2. Kirim data pesanan ke API ======
+		document.getElementById("formPemesanan").addEventListener("submit", async (e) => {
+			e.preventDefault();
+
+			const data = {
+				nama: document.getElementById("nama").value,
+				noHP: document.getElementById("noHP").value,
+				jumlahPesanan: parseInt(document.getElementById("jumlahPesanan").value),
+				lokasi: document.getElementById("lokasi").value,
+			};
+
+			try {
+				const res = await fetch("http://localhost/bento-cake/api-bento/order", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(data),
+				});
+
+				const json = await res.json();
+				const hasil = Array.isArray(json.data) ? json.data[0] : json.data || json;
+
+				document.getElementById("hasil").innerHTML = `
+      <div class='row'><div class='col-lg-2'>Nama Pelanggan:</div><div class='col-lg-2'>${hasil.nama}</div></div>
+      <div class='row'><div class='col-lg-2'>Nomor HP:</div><div class='col-lg-2'>${hasil.noHP}</div></div>
+      <div class='row'><div class='col-lg-2'>Jumlah Pesanan:</div><div class='col-lg-2'>${hasil.jumlahPesanan} box</div></div>
+      <div class='row'><div class='col-lg-2'>Lokasi Pengiriman:</div><div class='col-lg-2'>${hasil.lokasi}</div></div>
+      <div class='row'><div class='col-lg-2'>Tagihan Awal:</div><div class='col-lg-2'>Rp ${hasil.tagihanAwal.toLocaleString("id-ID")},-</div></div>
+      <div class='row'><div class='col-lg-2'>Ongkos Kirim:</div><div class='col-lg-2'>Rp ${hasil.ongkir.toLocaleString("id-ID")},-</div></div>
+      <div class='row'><div class='col-lg-2'>Total Tagihan:</div><div class='col-lg-2'><b>Rp ${hasil.totalTagihan.toLocaleString("id-ID")},-</b></div></div>
+    `;
+			} catch (err) {
+				console.error("Gagal kirim data:", err);
+				document.getElementById("hasil").innerHTML = `
+      <p style="color:red; text-align:center;">Terjadi kesalahan saat mengirim data.</p>
+    `;
+			}
+		});
+	</script>
+</body>
+
+</html>
